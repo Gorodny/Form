@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            color: blue;
+        }
+        .cb{
+            width: 20px;
+            height: 20px;
+        }
+        .rb{
+            width: 20px;
+            height: 20px;
+        }
+        .inp{
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="form1">
+        <label for="fname">Enter your name: </label>
+        <input type="text" name="fname" size="15" maxlength="15" value="Name"><br></br>
+        <input type="text" name="fname" size="15" maxlength="15" value="Name" disabled><br></br>
+        <input type="text" name="fname" size="15" maxlength="15" value="Name" readonly><br></br>
+        <label for="fname">Enter your password: </label>
+        <input type="password" name="password" size="20" maxlength="20"><br></br>
+        <label for=""> Choose language:
+            <input type="checkbox" name="lang1" value="english" class="cb">English
+            <input type="checkbox" name="lang2" value="spanish" class="cb">spanish
+            <input type="checkbox" name="lang1" value="german" class="cb">German
+            <input type="checkbox" name="lang1" value="french" class="cb">French
+        </label><br></br>
+        <label for=""> Your gender: 
+            <input type="radio" name="gender" value="male" class="rb"> male
+            <input type="radio" name="gender" value="female" class="rb"> female 
+            <input type="radio" name="gender" value="crousant" class="rb"> crousant
+        </label><br></br>
+<input type="submit" value="Submit" class="inp"> Submit <br>
+<input type="reset" value="Reset" class="inp"> Reset
+
+    </form>
+    <h1>Простий калькулятор</h1>
+    <form id="calculator">
+        <input type="number" id="number1" required>
+        <select id="operation">
+            <option value="add">Додавання</option>
+            <option value="subtract">Віднімання</option>
+            <option value="multiply">Множення</option>
+            <option value="divide">Ділення</option>
+        </select>
+        <input type="number" id="number2" required>
+        <button type="button" onclick="calculate()">Обрахувати</button>
+        <button type="button" onclick="clearForm()">Очистити вибір</button>
+    </form>
+    <h2>Результат: <span id="result"></span></h2>
+
+    <script>
+        function calculate() {
+            var num1 = parseFloat(document.getElementById('number1').value);
+            var num2 = parseFloat(document.getElementById('number2').value);
+            var operation = document.getElementById('operation').value;
+            var result;
+
+            switch(operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = "На нуль ділити не можна!";
+                    }
+                    break;
+            }
+
+            document.getElementById('result').textContent = result;
+        }
+
+        function clearForm() {
+            document.getElementById('number1').value = '';
+            document.getElementById('number2').value = '';
+            document.getElementById('operation').selectedIndex = 0;
+            document.getElementById('result').textContent = '';
+        }
+    </script>
+</body>
+</html>
